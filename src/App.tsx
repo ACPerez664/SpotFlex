@@ -1,13 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RequestForm from "./components/RequestForm";
+import ThankYou from "./components/ThankYou";
 
-const ThankYou = () => {
+export default function App() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Obrigada pela sua solicitação!</h1>
-      <p>Em breve, você receberá as opções de cotações solicitadas.</p>
-      <Link to="/" style={{ marginTop: '20px', display: 'inline-block' }}>Voltar para o formulário</Link>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<RequestForm />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+      </Routes>
+    </Router>
   );
-};
+}
 export default App;

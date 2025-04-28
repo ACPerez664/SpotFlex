@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 type FormData = {
@@ -26,6 +26,42 @@ type FormData = {
 const RequestForm = () => {
   const {
     register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm<FormData>();
+
+  // Função que vai rodar ao clicar no "Enviar"
+  const onSubmit = (data: FormData) => {
+    console.log(data); // (Opcional) Ver dados no console
+    window.location.href = "/thank-you"; // Redireciona para página de sucesso
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <h2>SpotFlex</h2>
+
+      {/* Seus campos já existentes aqui, sem necessidade de mudar */}
+      {/* Exemplo abaixo */}
+      
+      <div>
+        <label>Unidade de Negócio</label>
+        <select {...register("unidadeNegocio", { required: true })}>
+          <option value="">Selecione...</option>
+          <option value="Crop Protection">Crop Protection</option>
+          <option value="Seeds">Seeds</option>
+          <option value="Biological">Biological</option>
+        </select>
+      </div>
+
+      {/* (repita aqui os outros campos como estavam) */}
+
+      <button type="submit" style={{ marginTop: "20px" }}>Enviar</button>
+    </form>
+  );
+};
+
+export default RequestForm;
     handleSubmit,
     watch,
     formState: { errors },

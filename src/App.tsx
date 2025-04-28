@@ -10,3 +10,4 @@ const ThankYou = () => {
     </div>
   );
 };
+export default App;
